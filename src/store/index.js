@@ -9,6 +9,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     isLoggedIn: false,
+    isDialogOpen: false,
+    errorMessage: '',
     analytics: [],
   },
   getters: {
@@ -25,6 +27,16 @@ export default new Vuex.Store({
     },
     setAnalytics(state, payload) {
       state.analytics = payload;
+    },
+    showDialog(state) {
+      state.isDialogOpen = true;
+    },
+    hideDialog(state) {
+      state.isDialogOpen = false;
+      state.errorMessage = '';
+    },
+    setErrorMessage(state, payload) {
+      state.errorMessage = payload;
     },
   },
   actions: {
@@ -43,8 +55,8 @@ export default new Vuex.Store({
           console.log('false');
         }
       }).catch((error) => {
-        this.isError = true;
-        console.log(error);
+        commit('showDialog');
+        commit('setErrorMessage', error.message);
       });
     },
   },

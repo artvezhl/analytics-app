@@ -1,7 +1,7 @@
 <template>
   <v-container class="justify-center align-center fill-height">
     <AppInput @getUser="getUserRequest" :errorId="isError" />
-    <ErrorDialog v-model="isError" />
+    <ErrorDialog />
   </v-container>
 </template>
 
