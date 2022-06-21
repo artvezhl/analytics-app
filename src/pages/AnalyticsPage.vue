@@ -5,8 +5,22 @@
 </template>
 
 <script>
-export default {
+import { mapState } from 'vuex';
+// eslint-disable-next-line import/no-cycle
+import router from '@/router';
 
+export default {
+  computed: {
+    ...mapState(['isLoggedIn']),
+  },
+  created() {
+    if (!this.isLoggedIn) router.push('auth');
+  },
+  watch: {
+    isLoggedIn(newValue) {
+      if (newValue === false) router.push('auth');
+    },
+  },
 };
 </script>
 
