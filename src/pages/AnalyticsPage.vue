@@ -1,6 +1,6 @@
 <template>
   <v-container class="justify-center align-center fill-height">
-    <p>Analytics Page</p>
+    <h2>Analytics Page</h2>
   </v-container>
 </template>
 

@@ -26,12 +26,23 @@ export default {
       (value) => (value && value.length >= 24) || 'id сайта должен содержать 24 символа',
     ],
   }),
+  props: {
+    errorId: {
+      type: Boolean,
+      required: true,
+    },
+  },
   methods: {
     setErrorValue(value) {
       this.isError = value;
     },
     onBtnClick() {
       this.$emit('getUser', this.value);
+    },
+  },
+  watch: {
+    errorId() {
+      this.value = '';
     },
   },
 };
